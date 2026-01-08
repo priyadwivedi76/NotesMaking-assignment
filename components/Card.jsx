@@ -1,9 +1,13 @@
+'use client'
 import React from 'react'
+import Link from 'next/link'
+import { deleteTodo } from '@/app/actions/deleteNote'
 import { Hash,MoreVertical,Calendar } from 'lucide-react'
 
 const Card = ({data}) => {
-    console.log(data)
-    const {id,tag,title,content,date}=data
+    const {_id,tag,title,content,updatedAt, createdAt}=data
+    
+
   return (
    <div 
     className="break-inside-avoid bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-stone-200/50 transition-all cursor-pointer group"
@@ -18,14 +22,16 @@ const Card = ({data}) => {
         <p className="text-stone-600 text-sm leading-relaxed mb-6">{content}</p>
         
         <div className="flex items-center justify-end gap-2 pt-4 border-t border-stone-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <button 
+            <Link 
+                href={`/edit/${_id}`}
                 className="p-2 text-stone-400 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-all"
                 title="Edit Note"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
-            </button>
+            </Link>
             
             <button 
+            onClick={()=>deleteTodo(_id)}
                 className="p-2 text-stone-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
                 title="Delete Note"
             >
@@ -36,10 +42,9 @@ const Card = ({data}) => {
         <div className="flex items-center justify-between border-t border-stone-50 pt-4">
             <div className="flex items-center gap-2 text-stone-400">
                 <Calendar className="w-3 h-3" />
-                <span className="text-xs">{date}</span>
+                <span className="text-xs">{updatedAt}</span>
             </div>
             <div className="w-2 h-2 rounded-full bg-amber-400" /></div>
-            
         </div>
   )
 }

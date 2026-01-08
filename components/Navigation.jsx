@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { StickyNote, Search, Plus } from 'lucide-react'
 
 const Navigation = () => {
@@ -22,10 +23,10 @@ const Navigation = () => {
           </div>
         </div>
 
-        <button className="flex items-center gap-2 bg-stone-900 text-stone-50 px-4 py-2 rounded-full hover:bg-stone-800 transition-colors">
+        <Link href={'/create'} className="flex items-center gap-2 bg-stone-900 text-stone-50 px-4 py-2 rounded-full hover:bg-stone-800 transition-colors">
           <Plus className="w-4 h-4" />
           <span className="text-sm font-medium">New Note</span>
-        </button>
+        </Link>
       </nav>
   )
 }
