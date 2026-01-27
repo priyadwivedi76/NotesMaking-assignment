@@ -18,7 +18,7 @@ const Home = async() => {
 
       <main className="max-w-7xl mx-auto p-8">
         <header className="mb-10">
-          <h1 className="text-4xl font-light mb-2">Good morning, Alex.</h1>
+          <h1 className="text-4xl font-light mb-2">Welcome</h1>
         </header>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
